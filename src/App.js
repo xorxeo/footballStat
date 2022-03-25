@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+
+
+import Navbar from './Navbar';
+import Teams from './Teams';
+import Leagues from './Leagues';
+import LeaguesCalendar from './LeaguesCalendar';
+import TeamsCalendar from './TeamsCalendar';
+
+import { store } from './store/store'
+import { Provider } from 'react-redux';
+
 import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="content">
+            <Switch>
+              <Route exact path="/teams">
+                <Teams />
+              </Route>
+              <Route path="/teams/:id/matches">
+                <TeamsCalendar />
+              </Route>
+              <Route path="/competitions/:id/matches">
+                <LeaguesCalendar />
+              </Route>
+              <Route path="/competitions/:page">
+                <Leagues />
+              </Route>
+              <Route path="/competitions">
+                <Redirect to="/competitions/1" />
+              </Route>
+              
+            </Switch>
+          </div>
+        </div>
+      </Router>
+
+    </Provider >
   );
 }
 
