@@ -69,3 +69,14 @@ span {
   color: #f1356d;
   /* cursor: pointer; */
 }
+
+
+.pagination-container, .pagination-item {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.pagination-item {
+  
+}

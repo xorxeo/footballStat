@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 
 import Navbar from './Navbar';
-import Teams from './Teams';
-import Leagues from './Leagues';
+import { Teams } from './Teams';
+import { Leagues } from './Leagues';
 import LeaguesCalendar from './LeaguesCalendar';
 import TeamsCalendar from './TeamsCalendar';
 
@@ -21,8 +21,13 @@ function App() {
           <Navbar />
           <div className="content">
             <Switch>
-              <Route exact path="/teams">
+
+              <Route path="/teams/:page">
                 <Teams />
+              </Route>
+
+              <Route path="/teams">
+                <Redirect to="/teams/1" />
               </Route>
               <Route path="/teams/:id/matches">
                 <TeamsCalendar />
@@ -36,7 +41,7 @@ function App() {
               <Route path="/competitions">
                 <Redirect to="/competitions/1" />
               </Route>
-              
+
             </Switch>
           </div>
         </div>

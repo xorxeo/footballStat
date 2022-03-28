@@ -35,8 +35,8 @@ const Pagination = props => {
 
   let lastPage = paginationRange[paginationRange.length - 1];
 
-console.log(currentPage);
-console.log(paginationRange);
+// console.log(currentPage);
+// console.log(paginationRange);
 
 
   return (

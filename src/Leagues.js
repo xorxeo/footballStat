@@ -3,76 +3,94 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { useState, useMemo, useEffect } from "react";
 
 import Pagination from "./components/pagination/Pagination";
+import { useDataSlice } from "./hooks/useDataSlice";
+import { Search } from "./components/search/Search"
+import { useGetAvaibleCompetitionsQuery } from "./hooks/useGetAvaibleCompetitionsQuery"
+
+let pageSize = 4;
 
 
-
-let PageSize = 4;
-
-
-const Leagues = () => {
-    const { data, isLoading, isError } = useGetCompetitionsQuery();
+export const Leagues = () => {
+    const { availableLeaguesData, isLoading, isError } = useGetAvaibleCompetitionsQuery();
     const { page: currentPage = 1 } = useParams();
     const history = useHistory();
+    const [searchValue, setSearchValue] = useState("");
 
 
-    const availableLeagues = [
-        "WC", "CL", "BL1", "DED", "BSA", "PD", "FL1", "ELC", "PPL", "EC", "SA", "PL", "CLI"
-    ];
+    const filteredLeaguesData = useMemo(() => {
+        // console.log("avaiblelegues", data)
+        if (availableLeaguesData.length) {
+            // console.log("if true", data.competitions)
+            return availableLeaguesData
+                .filter(competition => competition.name.toLowerCase().includes(searchValue.toLowerCase())
+                        || competition.area.name.toLowerCase().includes(searchValue.toLowerCase())   
+                );
+        }
+        return [];
+    }, [availableLeaguesData, searchValue])
+
+    // console.log("availableLeaguesData", availableLeaguesData)
+
+    const currentLeaguesData = useDataSlice({
+        arr: filteredLeaguesData,
+        pageSize,
+        currentPage,
+    });
 
 
-    const currentData = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
-        const lastPageIndex = firstPageIndex + PageSize;
-        return availableLeagues.slice(firstPageIndex, lastPageIndex);
-      }, [currentPage]);
-      
+    console.log('currentLeaguesData', currentLeaguesData);
+    // console.log(currentPage);
 
-      console.log(currentData);
-
-    
     const onPageChangeHandler = (pageNumber) => {
         history.push(`/competitions/${pageNumber}`)
     }
 
-    //   if (!currentPage) {
-    //       return 
-    //   }
+    console.log("input value", searchValue)
 
     return (
-        <div className="leagues">
+        <div>
 
-
-
-            {isLoading && <div>loading...</div>}
-            {isError && <div>error</div>}
-            {data && data.competitions.filter(competition => currentData.includes(competition.code)).map((competition) => (
-
-                <div className="leagues-item" key={competition.id}>
-
-                    <Link to={`/competitions/${competition.id}/matches`}>
-
-                        <p> {competition.name} </p>
-                        <p> {competition.area.name} </p>
-
-                    </Link>
-
-                </div>
-            ))}
-
-            <Pagination
-                className="pagination-bar"
-                currentPage={Number(currentPage)}
-                totalCount={availableLeagues.length}
-                pageSize={PageSize}
-                onPageChange={onPageChangeHandler}
+            <Search
+                value={searchValue}
+                onInput={setSearchValue}
             />
 
+            <div className="leagues">
 
+                {isLoading && <div>loading...</div>}
+                {isError && <div>error</div>}
+                {Boolean(currentLeaguesData.length) && currentLeaguesData.map((competition) => (
+
+                    <div className="leagues-item" key={competition.id}>
+
+                        <Link to={`/competitions/${competition.id}/matches`}>
+
+                            <p> {competition.name} </p>
+                            <p> {competition.area.name} </p>
+
+                        </Link>
+
+                    </div>
+                ))}
+
+
+                <Pagination
+                    className="pagination-bar"
+                    currentPage={Number(currentPage)}
+                    totalCount={filteredLeaguesData.length}
+                    pageSize={pageSize}
+                    onPageChange={onPageChangeHandler}
+                />
+
+
+            </div>
         </div>
+
+
+
 
 
     );
 }
 
 
-export default Leagues;
