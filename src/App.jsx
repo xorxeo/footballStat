@@ -24,6 +24,10 @@ function App() {
           <div className="content">
             <Switch>
 
+              <Route path="/teams/:id/matches">
+                <TeamsCalendar />
+              </Route>
+
               <Route path="/teams/:page">
                 <Teams />
               </Route>
@@ -31,15 +35,16 @@ function App() {
               <Route path="/teams">
                 <Redirect to="/teams/1" />
               </Route>
-              <Route path="/teams/:id/matches">
-                <TeamsCalendar />
-              </Route>
+
+
               <Route path="/competitions/:id/matches">
                 <LeaguesCalendar />
               </Route>
+
               <Route path="/competitions/:page">
                 <Leagues />
               </Route>
+              
               <Route path="/competitions">
                 <Redirect to="/competitions/1" />
               </Route>

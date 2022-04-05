@@ -16,7 +16,7 @@ export const Leagues = () => {
     const history = useHistory();
     const [searchValue, setSearchValue] = useState("");
 
-
+    
     const filteredLeaguesData = useMemo(() => {
         // console.log("avaiblelegues", data)
         if (availableLeaguesData.length) {
@@ -26,10 +26,13 @@ export const Leagues = () => {
                         || competition.area.name.toLowerCase().includes(searchValue.toLowerCase())   
                 );
         }
+        
         return [];
     }, [availableLeaguesData, searchValue])
+    
+    console.log('filteredLeaguesData', filteredLeaguesData);
 
-    // console.log("availableLeaguesData", availableLeaguesData)
+    // console.log("availableLeaguesData", availableLeaguesData);
 
     const currentLeaguesData = useDataSlice({
         arr: filteredLeaguesData,
