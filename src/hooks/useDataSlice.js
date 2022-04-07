@@ -15,9 +15,9 @@ export const useDataSlice = (({
                 const lastPageIndex = firstPageIndex + pageSize;
                 
                 // console.log("if true slice")
-                console.log(firstPageIndex)
-                console.log(lastPageIndex)
-                console.log(currentPage)
+                console.log(firstPageIndex);
+                console.log(lastPageIndex);
+                console.log(currentPage);
 
                 return arr.slice(firstPageIndex, lastPageIndex);
             }

@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 
 import Navbar from './Navbar';
-import { Teams } from './Teams';
-import { Leagues } from './Leagues';
-import LeaguesCalendar from './LeaguesCalendar';
-import TeamsCalendar from './TeamsCalendar';
+import { Teams } from './pages/Teams';
+import { Leagues } from './pages/Leagues';
+import LeaguesCalendar from './pages/LeaguesCalendar';
+import TeamsCalendar from './pages/TeamsCalendar';
 
 import { store } from './store/store'
 import { Provider } from 'react-redux';

@@ -1,14 +1,14 @@
-import { useGetTeamsQuery } from "./store/footballAPI";
+import { useGetTeamsQuery } from "../store/footballAPI";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useMemo, useState } from "react";
 
-import Pagination from "./components/pagination/Pagination";
-import { useDataSlice } from "./hooks/useDataSlice";
-import { Search } from "./components/search/Search";
+import Pagination from "../components/pagination/Pagination";
+import { useDataSlice } from "../hooks/useDataSlice";
+import { Search } from "../components/search/Search";
 
 
 
-let pageSize = 7;
+let pageSize = 9;
 
 export const Teams = () => {
     const { data, isLoading, isError } = useGetTeamsQuery();
@@ -16,13 +16,17 @@ export const Teams = () => {
     const history = useHistory();
     const [searchValue, setSearchValue] = useState("");
 
+    const [searchActive, setSearchActive] = useState(false);
+
+
+
     const filteredTeamsData = useMemo(() => {
         if (data) {
-            
+
             return data.teams
                 .filter(team => team.name.toLowerCase().includes(searchValue.toLowerCase()))
         }
-        
+
         return [];
     }, [data, searchValue]);
 
@@ -45,16 +49,20 @@ export const Teams = () => {
     return (
         <div>
 
-            <Search 
+            <Search
                 value={searchValue}
                 onInput={setSearchValue}
+                place="team"
+                active={searchActive}
+                setActive={setSearchActive}
+
             />
 
-            <div className="teams">
+            <div className="teams-container">
 
 
-                {isLoading && <div>'loading...'</div>}
-                {isError && <div>error</div>}
+                {isLoading && <div className="loading">loading...</div>}
+                {isError && <div className="error">error</div>}
                 {Boolean(currentDataTeams.length) && currentDataTeams.map((team) => (
                     <div className="teams-item" key={team.id}>
 
@@ -68,16 +76,17 @@ export const Teams = () => {
                     </div>
                 ))}
 
-                <Pagination
-                    className="pagination-bar"
-                    currentPage={Number(currentPage)}
-                    totalCount={filteredTeamsData.length}
-                    pageSize={pageSize}
-                    onPageChange={onPageChangeHandler}
-                />
+
 
 
             </div>
+            <Pagination
+                className="pagination-bar"
+                currentPage={Number(currentPage)}
+                totalCount={filteredTeamsData.length}
+                pageSize={pageSize}
+                onPageChange={onPageChangeHandler}
+            />
         </div>
 
     );

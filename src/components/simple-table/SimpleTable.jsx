@@ -1,3 +1,5 @@
+import './SimpleTable.css'
+
 export const SimpleTable = (props) => {
     const {
         heads,
@@ -11,7 +13,7 @@ export const SimpleTable = (props) => {
 
     return (
 
-        <table className={`leagues-calendar-table ${classes}`}>
+        <table className={`table__${classes}`}>
 
             <thead>
                 <tr className="leagues-calendar-table__head">

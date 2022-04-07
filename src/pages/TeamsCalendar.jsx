@@ -1,40 +1,38 @@
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from "react";
 
-import { useGetLeaguesCalendarQuery } from "./store/footballAPI";
-import { getDateLocalString } from "./helpers/date.helpers";
-import { SimpleTable } from "./components/simple-table/SimpleTable";
+import { useGetTeamsCalendarQuery } from "../store/footballAPI";
+import { getDateLocalString } from "../helpers/date.helpers";
+import { SimpleTable } from "../components/simple-table/SimpleTable";
+import { TABLE_HEADS } from "./LeaguesCalendar";
 
 
-export const TABLE_HEADS = ['Date', 'Status', 'Home Team', 'Away Team', 'Score'];
 
-
-const LeaguesCalendar = () => {
+const TeamsCalendar = () => {
     const { id } = useParams();
-    const { data, isLoading, isError } = useGetLeaguesCalendarQuery(id);
+    const { data, isLoading, isError } = useGetTeamsCalendarQuery(id);
 
     const [bodyData, setBodyData] = useState([]);
-
 
     useEffect(() => {
         if (data) {
             const matches = data.matches.map(match => {
                 return [
-                    getDateLocalString(match.utcDate),
-                    match.status,
+                    
                     match.homeTeam.name,
                     match.awayTeam.name,
                     `${match.score.fullTime.homeTeam}:${match.score.fullTime.awayTeam}`,
+                    getDateLocalString(match.utcDate),
+                    match.status,
                 ]
             });
 
             setBodyData(matches);
         };
-
     }, [data]);
 
     return (
-        <div className="leagues-calendar">
+        <div className="teams-calendar">
 
             {isLoading && <div>loading...</div>}
             {isError && <div>error</div>}
@@ -44,5 +42,4 @@ const LeaguesCalendar = () => {
     );
 };
 
-export default LeaguesCalendar;
-
+export default TeamsCalendar;

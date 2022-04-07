@@ -5,6 +5,7 @@
 
 
 .App {
+  height: 100vh;
   text-align: center;
 }
 
@@ -15,46 +16,116 @@
 
 .navbar {
   padding: 20px;
-  display: flex;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
+  display: grid;
+  justify-items: left;
   border-bottom: 1px solid #f2f2f2;
+  font-size: 1em;
+  
 }
 
-.navbar h1 {
+/* .navbar h1 {
   color: #f1356d;
-}
+} */
 
 .navbar .links {
-  margin-left: auto;
+  margin-left: 0px;
 }
 
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
-  padding: 6px;
+  padding: 10px;
 }
 
-.navbar a:hover {
+/* .navbar a:hover {
   color: #f1356d;
+} */
+
+.content {
+  padding: 10px 0px 10px 0px;
+  height: 90vh;
 }
 
-.leagues-calendar, .leagues-item, .teams-item, .teams-calendar {
-  font-size: 20px;
+.search-form {
+  display: grid;
+  justify-items: right;
+  
+}
+
+.search-button {
+  display: grid;
+  justify-items: right;
+
+}
+
+
+.search__input {
+  padding: 10px;
+  border: 0;
+  width: 50vw;
+  margin-right: 1em; 
+  font-size: 1em;
+  display: none;
+  /* transform: translateX(-800%); */
+  
+}
+
+.search__input:focus {
+  outline: none;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.search__input.active-input {
+  display: block;
+  /* transform: translateX(0); */
+  transition: 0.6s;
+}
+
+
+.leagues-container, .teams-container {
+  display: grid;
+  height: 50vh;
+  padding: 10px 0px 10px 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+
+
+ .leagues-item, .teams-item {
+  display: grid;
+  align-items: center;
+  font-size: 15px;
+  color: #332429;
+  border: 2px solid #fafafa;
+  border-radius: 3px;
+}
+
+/* .teams-item, .teams-calendar {
+  display: grid;
+  font-size: 14px;
   color: #332429;
   border-bottom: 1px solid #fafafa;
   border-top: 1px solid #fafafa;
-  cursor: pointer;
-  align-items: center;
 
-}
+} */
 
 .leagues-item a, .teams-item a {
+  display: grid;
+  padding: 1em 0;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
-  display: block;
-
+  /* cursor: default; */
+  
 }
+
+leagues-item a p {
+  margin: 0.5rem;
+  padding: 0.5rem;
+} 
+
+
 
 .match:hover, .leagues-item:hover, .teams-item:hover, .team:hover {
   background-color: #eee;
