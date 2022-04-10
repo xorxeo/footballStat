@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 
 
 import './App.css';
+// import '..pages/Teams.css';
 
 
 
@@ -21,7 +22,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <div className="content">
+          
             <Switch>
 
               <Route path="/teams/:id/matches">
@@ -50,7 +51,7 @@ function App() {
               </Route>
 
             </Switch>
-          </div>
+          
         </div>
       </Router>
 

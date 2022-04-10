@@ -6,6 +6,8 @@ import Pagination from "../components/pagination/Pagination";
 import { useDataSlice } from "../hooks/useDataSlice";
 import { Search } from "../components/search/Search";
 
+import './Teams.css';
+
 
 
 let pageSize = 9;
@@ -15,14 +17,14 @@ export const Teams = () => {
     const { page: currentPage = 1 } = useParams();
     const history = useHistory();
     const [searchValue, setSearchValue] = useState("");
-
-    const [searchActive, setSearchActive] = useState(false);
+    const [activeSearchInput, setActiveSearchInput] = useState(false);
+    
 
 
 
     const filteredTeamsData = useMemo(() => {
         if (data) {
-
+            // console.log("input value", searchValue)
             return data.teams
                 .filter(team => team.name.toLowerCase().includes(searchValue.toLowerCase()))
         }
@@ -30,7 +32,7 @@ export const Teams = () => {
         return [];
     }, [data, searchValue]);
 
-    console.log(filteredTeamsData);
+    // console.log(filteredTeamsData);
 
     const currentDataTeams = useDataSlice({
         arr: filteredTeamsData,
@@ -38,7 +40,7 @@ export const Teams = () => {
         currentPage,
     });
 
-    console.log(currentDataTeams);
+    // console.log(currentDataTeams);
 
     const onPageChangeHandler = (pageNumber) => {
         history.push(`/teams/${pageNumber}`)
@@ -47,14 +49,16 @@ export const Teams = () => {
     // console.log("input value", searchValue)
 
     return (
-        <div>
+        <div className="content">
 
-            <Search
-                value={searchValue}
+            <Search 
+                className="search-bar"
                 onInput={setSearchValue}
-                place="team"
-                active={searchActive}
-                setActive={setSearchActive}
+                // place="search"
+                activeSearchInput={activeSearchInput}
+                setActiveSearchInput={setActiveSearchInput}
+                setSearchValue={setSearchValue}
+                
 
             />
 
@@ -80,6 +84,7 @@ export const Teams = () => {
 
 
             </div>
+            
             <Pagination
                 className="pagination-bar"
                 currentPage={Number(currentPage)}

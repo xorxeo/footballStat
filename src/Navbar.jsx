@@ -13,7 +13,7 @@ const Navbar = () => {
                 <NavLink to="/teams">Teams</NavLink>
                 
             </div>
-
+            
         </nav>
     );
 }

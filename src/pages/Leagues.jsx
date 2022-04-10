@@ -15,6 +15,7 @@ export const Leagues = () => {
     const { page: currentPage = 1 } = useParams();
     const history = useHistory();
     const [searchValue, setSearchValue] = useState("");
+    const [searchActive, setSearchActive] = useState(false);
 
 
     const filteredLeaguesData = useMemo(() => {
@@ -51,15 +52,19 @@ export const Leagues = () => {
     console.log("input value", searchValue)
 
     return (
-        <div>
+        
+
+          
+
+            <div className="leagues-container">
 
             <Search
                 value={searchValue}
                 onInput={setSearchValue}
-                place="league"
+                place="search"
+                active={searchActive}
+                setActive={setSearchActive}
             />
-
-            <div className="leagues-container">
 
                 {isLoading && <div className="loading">loading...</div>}
                 {isError && <div className="error">error</div>}
@@ -77,7 +82,7 @@ export const Leagues = () => {
                     </div>
                 ))}
 
-            </div>
+            
             <Pagination
                 className="pagination-bar"
                 currentPage={Number(currentPage)}
@@ -85,8 +90,8 @@ export const Leagues = () => {
                 pageSize={pageSize}
                 onPageChange={onPageChangeHandler}
             />
+        
         </div>
-
 
 
 

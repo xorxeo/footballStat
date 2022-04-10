@@ -1,38 +1,42 @@
 import { useState } from "react";
+import "./Search.css"
 
 
 
 export const Search = (props) => {
 
-    const { value, onInput, place, active, setActive } = props;
+    const { value, onInput, activeSearchInput, setActiveSearchInput, searchValue, setSearchValue} = props;
 
-
+    const fn = function(searchValue) {
+        // if (searchValue) {
+        // }
+        setActiveSearchInput(!activeSearchInput);
+        setSearchValue('');
+        console.log(typeof searchValue);
+    }
 
     return (
-        <div>
-            <div className="search-button">
-                <button className="search-button__search-button" onClick={() => setActive(!active)}>
-                    search
-                </button>
-            </div>
+      
+           
 
-            <div className="search-form">
-                <form className="search-form__input" >
+            <div className="search">
+                <button className="search__button" onClick={() => fn()}>
+                    
+                </button>
+                
                     <input
                         type="text"
-                        placeholder={`${place} search`}
-                        className={active ? 'search__input active-input' : 'search__input'}
+                        placeholder="type for search..."
+                        className={activeSearchInput ? 'search__input__active-input' : 'search__input'}
                         onChange={(event) => onInput(event.target.value)}
-                        
-                        
+
                     />
-                </form>
+   
 
 
             </div>
 
-        </div>
-
+        
     );
 }
 
