@@ -7,6 +7,7 @@ import { useDataSlice } from "../hooks/useDataSlice";
 import { Search } from "../components/search/Search";
 
 import './Teams.css';
+import '../App.css';
 
 
 
@@ -18,6 +19,7 @@ export const Teams = () => {
     const history = useHistory();
     const [searchValue, setSearchValue] = useState("");
     const [activeSearchInput, setActiveSearchInput] = useState(false);
+    const [activeSearchButton, setActiveSearchButton] = useState(false);
     
 
 
@@ -52,21 +54,22 @@ export const Teams = () => {
         <div className="content">
 
             <Search 
-                className="search-bar"
+                value={searchValue}
                 onInput={setSearchValue}
                 // place="search"
                 activeSearchInput={activeSearchInput}
                 setActiveSearchInput={setActiveSearchInput}
                 setSearchValue={setSearchValue}
+                activeSearchButton={activeSearchButton}
+                setActiveSearchButton={setActiveSearchButton}
                 
-
             />
 
             <div className="teams-container">
 
 
-                {isLoading && <div className="loading">loading...</div>}
-                {isError && <div className="error">error</div>}
+                {isLoading && <div className="loading"></div>}
+                {isError && <div className="error"></div>}
                 {Boolean(currentDataTeams.length) && currentDataTeams.map((team) => (
                     <div className="teams-item" key={team.id}>
 

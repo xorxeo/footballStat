@@ -1,51 +1,55 @@
 .search {
     display: grid;
     grid-template-columns: .5fr 1fr;
-  
+
     justify-items: left;
-    
-  }
-  
-  .search__button {
+
+}
+
+.search__button {
     display: grid;
     justify-items: left;
     height: 44px;
     width: 44px;
+    border: 0;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.3s all ease;
+    box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
     background: url('/src/img/ico-search-gray.svg') no-repeat;
     background-size: 22px;
     background-position: center;
     /* opacity: 0.5; */
     /* filter: alpha(opacity=90); */
-    
-  }
-  .search__button {
-    /* width: 2em; */
-    /* height: 2em; */
-    /* color: #fafafa; */
+
+}
+
+.search__button__active {
+    display: grid;
+    justify-items: left;
+    height: 44px;
+    width: 44px;
     border: 0;
-  
     padding: 10px;
     border-radius: 6px;
     transition: 0.3s all ease;
-    cursor: pointer;
-    /* color: #000; */
-    /* transition: 0.5s; */
-  
-    /* background: linear-gradient(145deg, #e2e8ec, #ffffff); */
     box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
-    
-  }
-  
-  /* .search__button:hover {
+    background: url('/src/img/ico-close-button-grey.svg') no-repeat;
+    background-size: 22px;
+    background-position: center;
+
+}
+
+/* .search__button:hover {
     background: #ff014f;
     color: white; 
     transform: translateY(-5px); 
     
   } */
-  
-  
-  .search__input {
-    
+
+
+.search__input {
+
     padding: 10px;
     border: 0;
     width: 70vw;
@@ -54,16 +58,15 @@
     transition: .7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
-  
-  .search__input__active-input:focus {
+
+.search__input__active-input:focus {
     outline: none;
     box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
-    
-  }
-  
-  .search__input__active-input {
+
+}
+
+.search__input__active-input {
     /* display: block; */
-    
     padding: 10px;
     border: 0;
     width: 70vw;
@@ -72,16 +75,5 @@
     /* transform: translateY(0) ; */
     transform: scale(1);
     transition: .7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    
-    
-  }
 
-  .search__button-close-button {
-    display: grid;
-    justify-items: left;
-    height: 44px;
-    width: 44px;
-    background: url('/src/img/ico-close-button.svg') no-repeat;
-    background-size: 22px;
-    background-position: center;
-  }
+}

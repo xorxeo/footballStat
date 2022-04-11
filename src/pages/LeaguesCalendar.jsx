@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useGetLeaguesCalendarQuery } from "../store/footballAPI";
 import { getDateLocalString } from "../helpers/date.helpers";
 import { SimpleTable } from "../components/simple-table/SimpleTable";
+import '../App.css';
 
 
 export const TABLE_HEADS = ['Home Team', 'Away Team', 'Score', 'Date', 'Status'];
@@ -37,8 +38,8 @@ const LeaguesCalendar = () => {
     return (
         <div className="leagues-calendar">
 
-            {isLoading && <div>loading...</div>}
-            {isError && <div>error</div>}
+            {isLoading && <div className="loading"></div>}
+            {isError && <div className="error"></div>}
             <SimpleTable data={bodyData} heads={TABLE_HEADS} classes={'leagues-calendar'}/>
 
         </div>

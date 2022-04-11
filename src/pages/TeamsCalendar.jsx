@@ -34,8 +34,8 @@ const TeamsCalendar = () => {
     return (
         <div className="teams-calendar">
 
-            {isLoading && <div>loading...</div>}
-            {isError && <div>error</div>}
+            {isLoading && <div className="loading"></div>}
+            {isError && <div className="error"></div>}
             <SimpleTable data={bodyData} heads={TABLE_HEADS} />
 
         </div>
