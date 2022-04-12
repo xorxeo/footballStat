@@ -3,12 +3,18 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     grid-gap: 10px;
-    padding: 10px 10px 10px 10px;
+    /* padding: 10px 10px 10px 10px; */
+    margin: 10px 60px;
+}
+
+.leagues-container :hover {
+    transform: scale(1.15);
 }
 
 .leagues-item {
     padding: 5px;
     align-self: stretch;
+    transition: all .3s ease-in-out;
 }
 
 .leagues-item a {

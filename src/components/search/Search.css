@@ -37,19 +37,9 @@
     background: url('/src/img/ico-close-button-grey.svg') no-repeat;
     background-size: 22px;
     background-position: center;
-
 }
 
-/* .search__button:hover {
-    background: #ff014f;
-    color: white; 
-    transform: translateY(-5px); 
-    
-  } */
-
-
 .search__input {
-
     padding: 10px;
     border: 0;
     width: 70vw;
@@ -58,11 +48,9 @@
     transition: .7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
-
 .search__input__active-input:focus {
     outline: none;
     box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
-
 }
 
 .search__input__active-input {

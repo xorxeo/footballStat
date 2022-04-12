@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 
-
 .App {
   height: 100vh;
   text-align: center;
@@ -13,7 +12,6 @@
   color: #61dafb;
 }
 
-
 .navbar {
   padding: 20px;
   display: grid;
@@ -22,8 +20,6 @@
   font-size: 1em;
   z-index: 1;
   background-color: white;
- 
-  
 }
 
 .navbar .links {
@@ -36,24 +32,16 @@
   padding: 10px;
 }
 
-
 .content {
   display: grid;
-  height: 90vh;
+  height: 85vh;
   padding: 10px 0px 10px 0px;
-  grid-template-rows: .05fr 0.05fr 1fr .1fr;
-
-  /* grid-template-areas: " a a a
-                         b b b";
-                         b b b";
-                         b b b
-                         c c c"; */
-
+  grid-template-rows:  0.05fr 1fr .1fr;
 }
-
 
 .match:hover, .leagues-item:hover, .teams-item:hover, .team:hover {
   background-color: #eee;
+  box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
 }
 
 .crest {
@@ -72,7 +60,6 @@ span {
   color: #f1356d;
   /* cursor: pointer; */
 }
-
 
 .pagination-container, .pagination-item {
   display: flex;

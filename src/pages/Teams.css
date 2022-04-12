@@ -3,13 +3,20 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     grid-gap: 10px;
-    padding: 10px 10px 10px 10px;
+    /* padding: 10px 10px 10px 10px; */
+    margin: 10px 60px;
+}
+
+.teams-container :hover {
+    transform: scale(1.15);
 }
 
 .teams-item {
     padding: 5px;
     align-self: stretch;
+    transition: all .3s ease-in-out;
 }
+
 
 .teams-item a {
     display: flex;

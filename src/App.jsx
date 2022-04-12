@@ -1,20 +1,18 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-
 import Navbar from './Navbar';
 import { Teams } from './pages/Teams';
 import { Leagues } from './pages/Leagues';
 import LeaguesCalendar from './pages/LeaguesCalendar';
 import TeamsCalendar from './pages/TeamsCalendar';
-
-import { Breadcrumbs } from './components/BreadCrumbs/Breadcrumbs';
+import { Breadcrumbs } from './components/BreadCrumbs/BreadCrumbs';
 
 import { store } from './store/store'
 import { Provider } from 'react-redux';
 
-
 import './App.css';
 import '../src/components/BreadCrumbs/breadCrumbs.css';
+
 
 
 
@@ -28,7 +26,7 @@ function App() {
           <Navbar />
 
 
-          <div className="container-fluid breadcrumbs">
+          <div className="breadcrumbs">
             <Route path='/:path' component={Breadcrumbs} />
           </div>
 
