@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Search } from './components/search/Search';
+import { Search } from '../search/Search';
 
 // const setActive = ({ isActive }) => isActive ? 'active-link' : '';
 

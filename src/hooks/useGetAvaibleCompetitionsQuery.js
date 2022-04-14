@@ -1,4 +1,4 @@
-import { AVAIBLE_LEAGUES } from "../avaibleLeagues";
+import { AVAIBLE_LEAGUES } from "../helpers/avaibleLeagues";
 import { useMemo } from "react";
 import { useGetCompetitionsQuery } from "../store/footballAPI";
 
