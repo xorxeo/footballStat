@@ -1,11 +1,18 @@
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+export const Breadcrumbs = (props) => {
+  const { crumbs, data } = props;
+  console.log(data);
 
-export const Breadcrumbs = ({ match, ...rest }) => (
-    <span>
-        <Link to={match.url || ''} className={match.isExact ? 'breadcrumb active' : 'breadcrumb'}>
-            {match.url.substr(match.url.lastIndexOf('/')+1, match.url.length)}
+  return (
+    <div className="bread-crumbs">
+      {crumbs.map((crumb) => (
+        <Link to={`${crumb.path}`} key={crumb.path}>
+          <span className="bread-crumbs-item" key={crumb.name}>
+            {`${crumb.name}>`}
+          </span>
         </Link>
-        <Route path={`${match.url}/:path`} component={Breadcrumbs} />
-    </span>
+      ))}
+    </div>
   );
+};

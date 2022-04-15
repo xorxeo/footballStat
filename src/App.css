@@ -4,7 +4,12 @@
 }
 
 .App {
-  height: 100vh;
+  display: grid;
+  position: absolute;
+  grid-template-rows: 8% 92%;
+  height: 100%;
+  width: 100%;
+  justify-items: stretch;
   text-align: center;
 }
 
@@ -13,30 +18,82 @@
 }
 
 .navbar {
-  padding: 20px;
   display: grid;
-  justify-items: left;
-  border-bottom: 1px solid #f2f2f2;
+  position: relative;
+  height: auto;
+  justify-items: start;
+  align-items: center;
+  border-bottom: 1px solid #cbcbcb;
+  border-radius: 5px;
   font-size: 1em;
   z-index: 1;
   background-color: white;
 }
 
-.navbar .links {
-  margin-left: 0px;
+.navbar:hover {
+  transition: 0.3s ease-in-out;
+  box-shadow: 4px 4px 8px #b4afaf, -4px -4px 8px #ffffff;
 }
 
-.navbar a {
-  margin-left: 16px;
+.links {
+  display: grid;
+  position: relative;
+  height: auto;
+  padding-left: 2em;
+  justify-items: center;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 1em; 
+  justify-items: center;
+}
+
+.links__item {
+  position: relative;
+  padding: 8px;
+}
+
+.links__item a {
+  font-size: 1.2em;
   text-decoration: none;
-  padding: 10px;
+}
+
+.links__item:hover {
+  color: #f1356d;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
 }
 
 .content {
   display: grid;
-  height: 85vh;
-  padding: 10px 0px 10px 0px;
-  grid-template-rows:  0.05fr 1fr .1fr;
+  position: relative;
+  justify-content: stretch;
+  justify-items: stretch;
+  height: auto;
+  width: auto;
+  padding: 0px 0px 10px 0px;
+  grid-template-rows:  7% 83% 10%;
+}
+
+.error, .loading {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top:-50px;
+}
+
+.loading {
+  opacity: 0.5;
+  background: url('/src/img/icon-loader.gif') no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
+}
+
+.error {
+  background: url('/src/img/icons-error.gif') no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
 }
 
 .match:hover, .leagues-item:hover, .teams-item:hover, .team:hover {
@@ -52,8 +109,6 @@
 
 span {
   display: inline-block;
-  /* padding: 10px; */
-   /* margin: 10px; */
 }
 
 .active {
@@ -67,25 +122,11 @@ span {
  
 }
 
-.loading {
-  display: flex;
-  flex-direction: column;
-  margin-left: 200px;
-  height: 80vh;
-  width: 80vw;
-  opacity: 0.5;
-  background: url('/src/img/icon-loader.gif') no-repeat;
-  background-position: center;
-  background-size: 50px 50px;
-}
-
-.error {
-  display: flex;
-  flex-direction: column;
-  margin-left: 200px;
-  height: 80vh;
-  width: 80vw;
-  background: url('/src/img/icons-error.gif') no-repeat;
-  background-position: center;
-  background-size: 50px 50px;
-}
+/* @media screen and (max-height: 600px) {
+  .links, .teams-item a {
+    font-size: 0.7em;
+  }
+  .links__item {
+    padding: 3px;
+  }
+} */

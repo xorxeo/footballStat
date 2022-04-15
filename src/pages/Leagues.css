@@ -1,34 +1,41 @@
 .leagues-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    grid-gap: 10px;
-    /* padding: 10px 10px 10px 10px; */
-    margin: 10px 60px;
+  display: grid;
+  position: relative;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 33.33% 33.33% 33.33%;
+  justify-content: center;
+  grid-gap: 10px;
+  padding: 10px 10px;
+  font-size: 1em;
 }
 
 .leagues-container :hover {
-    transform: scale(1.15);
+  transform: scale(1.1) ;
+  
 }
 
 .leagues-item {
-    padding: 5px;
-    align-self: stretch;
-    transition: all .3s ease-in-out;
+  padding: 5px;
+  align-self: stretch;
+  transition: all 0.3s ease-in-out;
 }
 
 .leagues-item a {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-self: stretch;
-    height: 100%;
-    padding: 5px;
-    color: black;
-    text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: stretch;
+  height: 100%;
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+  
 }
 
-.leagues-item a:visited {
-    color: black;
-}
+/* .leagues-item a {
+    transform: scale(1.5);
+} */
 
+/* .leagues-item a:visited {
+  color: black;
+} */

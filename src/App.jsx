@@ -4,7 +4,7 @@ import Navbar from './components/nav-bar/Navbar';
 import { Teams } from './pages/Teams';
 import { Leagues } from './pages/Leagues';
 import LeaguesCalendar from './pages/LeaguesCalendar';
-import {TeamsCalendar} from './pages/TeamsCalendar';
+import { TeamsCalendar } from './pages/TeamsCalendar';
 import { Breadcrumbs } from './components/bread-crumbs/BreadCrumbs';
 
 import { store } from './store/store';
@@ -20,34 +20,11 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-
           <Switch>
-
-            <Route path="/teams/:id/matches">
-              <TeamsCalendar />
-            </Route>
-
-            <Route path="/teams/:page">
-              <Teams />
-            </Route>
-
-            <Route path="/teams">
-              <Redirect to="/teams/1" />
-            </Route>
-
-
-            <Route path="/competitions/:id/matches">
-              <LeaguesCalendar />
-            </Route>
-
-            <Route path="/competitions/:page">
-              <Leagues />
-            </Route>
-
-            <Route path="/competitions">
-              <Redirect to="/competitions/1" />
-            </Route>
-
+            {routes.map((route) => {
+              console.log('>>>>>> r:', route.path);
+              return <Route key={route.path} path={route.path} component={route.component} />;
+            })}
           </Switch>
         </div>
       </Router>

@@ -76,9 +76,9 @@ export const Leagues = () => {
           currentLeaguesData.map((competition) => (
             <div className="leagues-item" key={competition.id}>
               <Link to={`/competitions/${competition.id}/matches`}>
-                <p> {competition.name} </p>
                 <img className="crest" src={competition.area.ensignUrl} width="50" height="50"></img>
-                <p> {competition.area.name} </p>
+                {competition.name} 
+                {/* <p> {competition.area.name} </p> */}
               </Link>
             </div>
           ))}
